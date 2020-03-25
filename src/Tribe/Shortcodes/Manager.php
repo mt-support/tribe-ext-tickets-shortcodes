@@ -2,17 +2,20 @@
 /**
  * Shortcodes manager for the new views.
  *
- * @package Tribe\Events\Pro\Views\V2\Shortcodes
  * @since   1.0.0
+ * @package Tribe\Events\Pro\Views\V2\Shortcodes
  */
+
 namespace Tribe\Extensions\Tickets\Shortcodes\Shortcodes;
 
 /**
  * Class Shortcode Manager.
+ *
  * @since   1.0.0
  * @package Tribe\Extensions\Tickets\Shortcodes
  */
 class Manager {
+
 	/**
 	 * Get the list of shortcodes available for handling.
 	 *
@@ -46,12 +49,13 @@ class Manager {
 	 *
 	 * @since  1.0.0
 	 *
-	 * @param  string $slug Which slug we are checking if is registered.
+	 * @param string $slug Which slug we are checking if is registered.
 	 *
 	 * @return bool
 	 */
 	public function is_shortcode_registered( $slug ) {
 		$registered_shortcodes = $this->get_registered_shortcodes();
+
 		return isset( $registered_shortcodes[ $slug ] );
 	}
 
@@ -60,13 +64,14 @@ class Manager {
 	 *
 	 * @since  1.0.0
 	 *
-	 * @param  string $class_name Which class name we are checking if is registered.
+	 * @param string $class_name Which class name we are checking if is registered.
 	 *
 	 * @return bool
 	 */
 	public function is_shortcode_registered_by_class( $class_name ) {
 		$registered_shortcodes = $this->get_registered_shortcodes();
-		return in_array( $class_name, $registered_shortcodes );
+
+		return in_array( $class_name, $registered_shortcodes, true );
 	}
 
 	/**
