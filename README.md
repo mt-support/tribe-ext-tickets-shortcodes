@@ -57,8 +57,8 @@ The shortcode only shows the content if the currently logged in user is or isn't
 
 It has three *optional parameters* available to customize how it works:
 
-* `post_id` - The ID of the event (post or page, depending on your site configuration) of which you want to check attendee status.
-* `ticket_ids` - Provide a comma-separated list of Ticket IDs to limit the attendee status check for.
+* `post_id` - This defaults to the current post ID. The ID of the event (post or page, depending on your site configuration) of which you want to check attendee status.
+* `ticket_ids` - This defaults to attendees for _any ticket_. Provide a comma-separated list of Ticket IDs to limit the attendee status check for.
 * `ticketed` - This defaults to `1` which means the shortcode will always check that the user **IS an attendee** before showing the content. Set this to `0` to check that the user **IS NOT an attendee** before showing the content.
 
 #### Example 1: Protected content based on any attendee for the *current* event
@@ -125,8 +125,8 @@ The shortcode only shows the content if the currently logged in user is or isn't
 
 It has three *optional parameters* available to customize how it works:
 
-* `post_id` - The ID of the event (post or page, depending on your site configuration) of which you want to check RSVP attendee status.
-* `rsvp_ids` - Provide a comma-separated list of RSVP IDs to limit the attendee status check for.
+* `post_id` - This defaults to the current post ID. The ID of the event (post or page, depending on your site configuration) of which you want to check RSVP attendee status.
+* `rsvp_ids` - This defaults to attendees for _any RSVP_. Provide a comma-separated list of RSVP IDs to limit the attendee status check for.
 * `rsvpd` - This defaults to `1` which means the shortcode will always check that the user **IS an RSVP attendee** before showing the content. Set this to `0` to check that the user **IS NOT an RSVP attendee** before showing the content.
 
 #### Example 1: Protected content based on any RSVP attendee for the *current* event
