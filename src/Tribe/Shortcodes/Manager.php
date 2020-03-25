@@ -22,9 +22,11 @@ class Manager {
 	 */
 	public function get_registered_shortcodes() {
 		$shortcodes = [
-			'tribe_tickets'           => Tribe_Tickets::class,
-			'tribe_tickets_rsvp'      => Tribe_Tickets_Rsvp::class,
-			'tribe_tickets_attendees' => Tribe_Tickets_Attendees::class,
+			'tribe_tickets'                        => Tribe_Tickets::class,
+			'tribe_tickets_rsvp'                   => Tribe_Tickets_Rsvp::class,
+			'tribe_tickets_attendees'              => Tribe_Tickets_Attendees::class,
+			'tribe_tickets_protected_content'      => Tribe_Tickets_Protected_Content::class,
+			'tribe_tickets_rsvp_protected_content' => Tribe_Tickets_Rsvp_Protected_Content::class,
 		];
 
 		/**
