@@ -56,8 +56,6 @@ class Hooks extends \tad_DI52_ServiceProvider {
 	/**
 	 * Adds the shortcodes.
 	 *
-	 * It's important to leave gaps on priority for better injection.
-	 *
 	 * @since TBD
 	 */
 	public function action_add_shortcodes() {

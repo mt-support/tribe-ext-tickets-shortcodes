@@ -1,6 +1,6 @@
 <?php
 /**
- * Shortcode Tribe_Tickets.
+ * Shortcode Tribe_Tickets_Rsvp.
  *
  * @package Tribe\Extensions\Tickets\Shortcodes
  * @since   1.0.0

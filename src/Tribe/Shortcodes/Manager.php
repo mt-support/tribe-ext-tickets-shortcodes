@@ -1,9 +1,9 @@
 <?php
 /**
- * Shortcodes manager for the new views.
+ * Shortcodes manager for the Event Tickets
  *
  * @since   1.0.0
- * @package Tribe\Events\Pro\Views\V2\Shortcodes
+ * @package Tribe\Extensions\Tickets\Shortcodes
  */
 
 namespace Tribe\Extensions\Tickets\Shortcodes\Shortcodes;
@@ -33,7 +33,7 @@ class Manager {
 		];
 
 		/**
-		 * Allow the registering of shortcodes into the our Pro plugin.
+		 * Allow the registering of shortcodes into Event Tickets
 		 *
 		 * @since  1.0.0
 		 *
