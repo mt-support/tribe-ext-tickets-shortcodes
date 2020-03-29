@@ -95,7 +95,7 @@ interface Shortcode_Interface {
 	 * @since 1.0.0
 	 *
 	 * @param array  $index   Which index we indent to fetch from the arguments.
-	 * @param array  $default Default value if it doesnt exist.
+	 * @param array  $default Default value if it doesn't exist.
 	 *
 	 * @return array
 	 */

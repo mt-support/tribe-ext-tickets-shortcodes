@@ -162,13 +162,13 @@ abstract class Shortcode_Abstract implements Shortcode_Interface {
 		$argument  = Arr::get( $arguments, $index, $default );
 
 		/**
-		 * Applies a filter to a specific shortcode argument, catch all for all shortcodes..
+		 * Applies a filter to a specific shortcode argument, catch all for all shortcodes.
 		 *
 		 * @since  1.0.0
 		 *
 		 * @param  mixed  $argument   The argument.
 		 * @param  array  $index      Which index we indent to fetch from the arguments.
-		 * @param  array  $default    Default value if it doesnt exist.
+		 * @param  array  $default    Default value if it doesn't exist.
 		 * @param  static $instance   Which instance of shortcode we are dealing with.
 		 */
 		$argument = apply_filters( 'tribe_tickets_shortcode_argument', $argument, $index, $default, $this );
@@ -182,7 +182,7 @@ abstract class Shortcode_Abstract implements Shortcode_Interface {
 		 *
 		 * @param  mixed  $argument   The argument value.
 		 * @param  array  $index      Which index we indent to fetch from the arguments.
-		 * @param  array  $default    Default value if it doesnt exist.
+		 * @param  array  $default    Default value if it doesn't exist.
 		 * @param  static $instance   Which instance of shortcode we are dealing with.
 		 */
 		$argument = apply_filters( "tribe_tickets_shortcode_{$registration_slug}_argument", $argument, $index, $default, $this );
