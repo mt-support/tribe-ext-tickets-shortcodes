@@ -186,3 +186,13 @@ This content will only show to people who are NOT RSVP attendees of the event (I
 ```
 
 _Where 123 is the ID of the post/page/event where the RSVP's were created_
+
+#### Example 7: Complex protected content cases RSVP NON-attendees for specific tickets on a specific event
+
+```
+[tribe_tickets_rsvp_protected_content post_id="123" ticket_ids="32,50,90" rsvpd="0"]
+This content will only show to people who are NOT RSVP attendees of the event (ID: 123) who have NOT RSVP'd to certain RSVP's (IDs: 32, 50, or 90).
+[/tribe_tickets_rsvp_protected_content]
+```
+
+_Where 123 is the ID of the post/page/event where the RSVP's were created_
