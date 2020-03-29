@@ -119,6 +119,17 @@ This content will only show to people who are NOT attendees of the event (ID: 12
 
 _Where 123 is the ID of the post/page/event where the tickets were created_
 
+
+#### Example 7: Protected content for attendees on a specific event who are not an attendee of specific tickets
+
+```
+[tribe_tickets_protected_content post_id="123" not_ticket_ids="32,50,90"]
+This content will only show to people who are attendees of the event (ID: 123) who have NOT purchased certain tickets (IDs: 32, 50, or 90).
+[/tribe_tickets_protected_content]
+```
+
+_Where 123 is the ID of the post/page/event where the tickets were created_
+
 ### Tribe Tickets RSVP Protected Content shortcode
 
 The shortcode only shows the content if the currently logged in user is or isn't an attendee on the provided event. It supports HTML, text content, other shortcodes, oEmbeds, or any other useful content you might want.
@@ -187,11 +198,11 @@ This content will only show to people who are NOT RSVP attendees of the event (I
 
 _Where 123 is the ID of the post/page/event where the RSVP's were created_
 
-#### Example 7: Complex protected content cases RSVP NON-attendees for specific tickets on a specific event
+#### Example 7: Protected content for RSVP attendees on a specific event who are not an attendee of specific RSVP tickets
 
 ```
-[tribe_tickets_rsvp_protected_content post_id="123" ticket_ids="32,50,90" rsvpd="0"]
-This content will only show to people who are NOT RSVP attendees of the event (ID: 123) who have NOT RSVP'd to certain RSVP's (IDs: 32, 50, or 90).
+[tribe_tickets_rsvp_protected_content post_id="123" not_ticket_ids="32,50,90"]
+This content will only show to people who are RSVP attendees of the event (ID: 123) who have NOT RSVP'd to certain RSVP's (IDs: 32, 50, or 90).
 [/tribe_tickets_rsvp_protected_content]
 ```
 
