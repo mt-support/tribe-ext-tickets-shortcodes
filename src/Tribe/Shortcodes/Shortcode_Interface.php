@@ -2,16 +2,17 @@
 /**
  * The interface all shortcodes should implement.
  *
- * @package Tribe\Extensions\Tickets\Shortcodes
  * @since   1.0.0
+ * @package Tribe\Extensions\Tickets\Shortcodes
  */
+
 namespace Tribe\Extensions\Tickets\Shortcodes\Shortcodes;
 
 /**
  * Interface Shortcode_Interface
  *
- * @package Tribe\Extensions\Tickets\Shortcodes
  * @since   1.0.0
+ * @package Tribe\Extensions\Tickets\Shortcodes
  */
 interface Shortcode_Interface {
 
@@ -43,7 +44,7 @@ interface Shortcode_Interface {
 	 *
 	 * @since 1.0.0
 	 *
-	 * @param array  $arguments Set of arguments passed to the Shortcode at hand.
+	 * @param array $arguments Set of arguments passed to the Shortcode at hand.
 	 *
 	 * @return array
 	 */
@@ -54,7 +55,7 @@ interface Shortcode_Interface {
 	 *
 	 * @since 1.0.0
 	 *
-	 * @param array  $arguments Set of arguments passed to the Shortcode at hand.
+	 * @param array $arguments Set of arguments passed to the Shortcode at hand.
 	 *
 	 * @return array
 	 */
@@ -90,14 +91,14 @@ interface Shortcode_Interface {
 	/**
 	 * Returns a shortcode argument after been parsed.
 	 *
-	 * @uses  Tribe__Utils__Array::get For index fetching and Default.
-	 *
 	 * @since 1.0.0
 	 *
-	 * @param array  $index   Which index we indent to fetch from the arguments.
-	 * @param array  $default Default value if it doesn't exist.
+	 * @param array $index   Which index we indent to fetch from the arguments.
+	 * @param array $default Default value if it doesn't exist.
 	 *
 	 * @return array
+	 * @uses  Tribe__Utils__Array::get For index fetching and Default.
+	 *
 	 */
 	public function get_argument( $index, $default = null );
 

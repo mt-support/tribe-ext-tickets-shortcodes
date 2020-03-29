@@ -2,15 +2,17 @@
 /**
  * Shortcode Tribe_Tickets.
  *
- * @package Tribe\Extensions\Tickets\Shortcodes
  * @since   1.0.0
+ * @package Tribe\Extensions\Tickets\Shortcodes
  */
+
 namespace Tribe\Extensions\Tickets\Shortcodes\Shortcodes;
 
 use Tribe__Tickets__Tickets as Tickets;
 
 /**
  * Class for Shortcode Tribe_Tickets.
+ *
  * @since   1.0.0
  * @package Tribe\Extensions\Tickets\Shortcodes\Shortcodes
  */
@@ -25,7 +27,7 @@ class Tribe_Tickets extends Shortcode_Abstract {
 	 * {@inheritDoc}
 	 */
 	protected $default_arguments = [
-		'post_id'           => null,
+		'post_id' => null,
 	];
 
 	/**
@@ -51,7 +53,6 @@ class Tribe_Tickets extends Shortcode_Abstract {
 	 * @return string HTML.
 	 */
 	public function get_tickets_block( $post ) {
-
 		if ( empty( $post ) ) {
 			return '';
 		}
