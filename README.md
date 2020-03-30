@@ -59,6 +59,7 @@ It has three *optional parameters* available to customize how it works:
 
 * `post_id` - This defaults to the current post ID. The ID of the event (post or page, depending on your site configuration) of which you want to check attendee status.
 * `ticket_ids` - This defaults to attendees for _any ticket_. Provide a comma-separated list of Ticket IDs to limit the attendee status check for.
+* `not_ticket_ids` - This defaults as empty. Provide a comma-separated list of Ticket IDs to exclude on the attendee status check for. _Note: This will ensure that only attendees who have purchased other tickets will be returned._
 * `ticketed` - This defaults to `1` which means the shortcode will always check that the user **IS an attendee** before showing the content. Set this to `0` to check that the user **IS NOT an attendee** before showing the content.
 
 #### Example 1: Protected content based on any attendee for the *current* event
@@ -138,6 +139,7 @@ It has three *optional parameters* available to customize how it works:
 
 * `post_id` - This defaults to the current post ID. The ID of the event (post or page, depending on your site configuration) of which you want to check RSVP attendee status.
 * `rsvp_ids` - This defaults to attendees for _any RSVP_. Provide a comma-separated list of RSVP IDs to limit the attendee status check for.
+* `not_rsvp_ids` - This defaults as empty. Provide a comma-separated list of RSVP IDs to exclude on the attendee status check for. _Note: This will ensure that only attendees who have RSVP'd for other RSVP's will be returned._
 * `rsvpd` - This defaults to `1` which means the shortcode will always check that the user **IS an RSVP attendee** before showing the content. Set this to `0` to check that the user **IS NOT an RSVP attendee** before showing the content.
 
 #### Example 1: Protected content based on any RSVP attendee for the *current* event
