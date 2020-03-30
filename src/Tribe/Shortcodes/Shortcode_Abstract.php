@@ -2,9 +2,10 @@
 /**
  * The interface all shortcodes should implement.
  *
- * @package Tribe\Extensions\Tickets\Shortcodes
  * @since   1.0.0
+ * @package Tribe\Extensions\Tickets\Shortcodes
  */
+
 namespace Tribe\Extensions\Tickets\Shortcodes\Shortcodes;
 
 use Tribe__Utils__Array as Arr;
@@ -12,10 +13,11 @@ use Tribe__Utils__Array as Arr;
 /**
  * Interface Shortcode_Interface
  *
- * @package Tribe\Extensions\Tickets\Shortcodes
  * @since   1.0.0
+ * @package Tribe\Extensions\Tickets\Shortcodes
  */
 abstract class Shortcode_Abstract implements Shortcode_Interface {
+
 	/**
 	 * Slug of the current shortcode.
 	 *
@@ -74,6 +76,7 @@ abstract class Shortcode_Abstract implements Shortcode_Interface {
 	 */
 	public function parse_arguments( $arguments ) {
 		$arguments = shortcode_atts( $this->get_default_arguments(), $arguments, $this->slug );
+
 		return $this->validate_arguments( $arguments );
 	}
 
@@ -105,8 +108,8 @@ abstract class Shortcode_Abstract implements Shortcode_Interface {
 		 *
 		 * @since  1.0.0
 		 *
-		 * @param  array  $validate_arguments_map   Current set of callbacks for arguments.
-		 * @param  static $instance                 Which instance of shortcode we are dealing with.
+		 * @param array  $validate_arguments_map Current set of callbacks for arguments.
+		 * @param static $instance               Which instance of shortcode we are dealing with.
 		 */
 		$validate_arguments_map = apply_filters( 'tribe_tickets_shortcode_validate_arguments_map', $this->validate_arguments_map, $this );
 
@@ -117,8 +120,8 @@ abstract class Shortcode_Abstract implements Shortcode_Interface {
 		 *
 		 * @since  1.0.0
 		 *
-		 * @param  array  $validate_arguments_map   Current set of callbacks for arguments.
-		 * @param  static $instance                 Which instance of shortcode we are dealing with.
+		 * @param array  $validate_arguments_map Current set of callbacks for arguments.
+		 * @param static $instance               Which instance of shortcode we are dealing with.
 		 */
 		$validate_arguments_map = apply_filters( "tribe_tickets_shortcode_{$registration_slug}_validate_arguments_map", $validate_arguments_map, $this );
 
@@ -134,8 +137,8 @@ abstract class Shortcode_Abstract implements Shortcode_Interface {
 		 *
 		 * @since  1.0.0
 		 *
-		 * @param  array  $arguments  Current set of arguments.
-		 * @param  static $instance   Which instance of shortcode we are dealing with.
+		 * @param array  $arguments Current set of arguments.
+		 * @param static $instance  Which instance of shortcode we are dealing with.
 		 */
 		$arguments = apply_filters( 'tribe_tickets_shortcode_arguments', $this->arguments, $this );
 
@@ -146,8 +149,8 @@ abstract class Shortcode_Abstract implements Shortcode_Interface {
 		 *
 		 * @since  1.0.0
 		 *
-		 * @param  array  $arguments   Current set of arguments.
-		 * @param  static $instance    Which instance of shortcode we are dealing with.
+		 * @param array  $arguments Current set of arguments.
+		 * @param static $instance  Which instance of shortcode we are dealing with.
 		 */
 		$arguments = apply_filters( "tribe_tickets_shortcode_{$registration_slug}_arguments", $arguments, $this );
 
@@ -166,10 +169,10 @@ abstract class Shortcode_Abstract implements Shortcode_Interface {
 		 *
 		 * @since  1.0.0
 		 *
-		 * @param  mixed  $argument   The argument.
-		 * @param  array  $index      Which index we indent to fetch from the arguments.
-		 * @param  array  $default    Default value if it doesn't exist.
-		 * @param  static $instance   Which instance of shortcode we are dealing with.
+		 * @param mixed  $argument The argument.
+		 * @param array  $index    Which index we indent to fetch from the arguments.
+		 * @param array  $default  Default value if it doesn't exist.
+		 * @param static $instance Which instance of shortcode we are dealing with.
 		 */
 		$argument = apply_filters( 'tribe_tickets_shortcode_argument', $argument, $index, $default, $this );
 
@@ -180,10 +183,10 @@ abstract class Shortcode_Abstract implements Shortcode_Interface {
 		 *
 		 * @since  1.0.0
 		 *
-		 * @param  mixed  $argument   The argument value.
-		 * @param  array  $index      Which index we indent to fetch from the arguments.
-		 * @param  array  $default    Default value if it doesn't exist.
-		 * @param  static $instance   Which instance of shortcode we are dealing with.
+		 * @param mixed  $argument The argument value.
+		 * @param array  $index    Which index we indent to fetch from the arguments.
+		 * @param array  $default  Default value if it doesn't exist.
+		 * @param static $instance Which instance of shortcode we are dealing with.
 		 */
 		$argument = apply_filters( "tribe_tickets_shortcode_{$registration_slug}_argument", $argument, $index, $default, $this );
 
@@ -199,8 +202,8 @@ abstract class Shortcode_Abstract implements Shortcode_Interface {
 		 *
 		 * @since  1.0.0
 		 *
-		 * @param  array  $default_arguments  Current set of default arguments.
-		 * @param  static $instance           Which instance of shortcode we are dealing with.
+		 * @param array  $default_arguments Current set of default arguments.
+		 * @param static $instance          Which instance of shortcode we are dealing with.
 		 */
 		$default_arguments = apply_filters( 'tribe_tickets_shortcode_default_arguments', $this->default_arguments, $this );
 
@@ -211,8 +214,8 @@ abstract class Shortcode_Abstract implements Shortcode_Interface {
 		 *
 		 * @since  1.0.0
 		 *
-		 * @param  array  $default_arguments   Current set of default arguments.
-		 * @param  static $instance            Which instance of shortcode we are dealing with.
+		 * @param array  $default_arguments Current set of default arguments.
+		 * @param static $instance          Which instance of shortcode we are dealing with.
 		 */
 		$default_arguments = apply_filters( "tribe_tickets_shortcode_{$registration_slug}_default_arguments", $this->default_arguments, $this );
 

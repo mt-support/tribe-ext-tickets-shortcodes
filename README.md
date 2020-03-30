@@ -59,6 +59,7 @@ It has three *optional parameters* available to customize how it works:
 
 * `post_id` - This defaults to the current post ID. The ID of the event (post or page, depending on your site configuration) of which you want to check attendee status.
 * `ticket_ids` - This defaults to attendees for _any ticket_. Provide a comma-separated list of Ticket IDs to limit the attendee status check for.
+* `not_ticket_ids` - This defaults as empty. Provide a comma-separated list of Ticket IDs to exclude on the attendee status check for. _Note: This will ensure that only attendees who have purchased other tickets will be returned._
 * `ticketed` - This defaults to `1` which means the shortcode will always check that the user **IS an attendee** before showing the content. Set this to `0` to check that the user **IS NOT an attendee** before showing the content.
 
 #### Example 1: Protected content based on any attendee for the *current* event
@@ -119,6 +120,17 @@ This content will only show to people who are NOT attendees of the event (ID: 12
 
 _Where 123 is the ID of the post/page/event where the tickets were created_
 
+
+#### Example 7: Protected content for attendees on a specific event who are not an attendee of specific tickets
+
+```
+[tribe_tickets_protected_content post_id="123" not_ticket_ids="32,50,90"]
+This content will only show to people who are attendees of the event (ID: 123) who have NOT purchased certain tickets (IDs: 32, 50, or 90).
+[/tribe_tickets_protected_content]
+```
+
+_Where 123 is the ID of the post/page/event where the tickets were created_
+
 ### Tribe Tickets RSVP Protected Content shortcode
 
 The shortcode only shows the content if the currently logged in user is or isn't an attendee on the provided event. It supports HTML, text content, other shortcodes, oEmbeds, or any other useful content you might want.
@@ -127,6 +139,7 @@ It has three *optional parameters* available to customize how it works:
 
 * `post_id` - This defaults to the current post ID. The ID of the event (post or page, depending on your site configuration) of which you want to check RSVP attendee status.
 * `rsvp_ids` - This defaults to attendees for _any RSVP_. Provide a comma-separated list of RSVP IDs to limit the attendee status check for.
+* `not_rsvp_ids` - This defaults as empty. Provide a comma-separated list of RSVP IDs to exclude on the attendee status check for. _Note: This will ensure that only attendees who have RSVP'd for other RSVP's will be returned._
 * `rsvpd` - This defaults to `1` which means the shortcode will always check that the user **IS an RSVP attendee** before showing the content. Set this to `0` to check that the user **IS NOT an RSVP attendee** before showing the content.
 
 #### Example 1: Protected content based on any RSVP attendee for the *current* event
@@ -150,7 +163,7 @@ _Where 123 is the ID of the post/page/event where the RSVP's were created_
 #### Example 3: Protected content based on RSVP attendees for specific tickets on a specific event
 
 ```
-[tribe_tickets_rsvp_protected_content post_id="123" ticket_ids="32,50,90"]
+[tribe_tickets_rsvp_protected_content post_id="123" rsvp_ids="32,50,90"]
 This content will only show to RSVP attendees of the event (ID: 123) who have RSVP'd to certain RSVP's (IDs: 32, 50, or 90).
 [/tribe_tickets_rsvp_protected_content]
 ```
@@ -180,8 +193,18 @@ _Where 123 is the ID of the post/page/event where the RSVP's were created_
 #### Example 6: Protected content based on RSVP NON-attendees for specific tickets on a specific event
 
 ```
-[tribe_tickets_rsvp_protected_content post_id="123" ticket_ids="32,50,90" rsvpd="0"]
+[tribe_tickets_rsvp_protected_content post_id="123" rsvp_ids="32,50,90" rsvpd="0"]
 This content will only show to people who are NOT RSVP attendees of the event (ID: 123) who have NOT RSVP'd to certain RSVP's (IDs: 32, 50, or 90).
+[/tribe_tickets_rsvp_protected_content]
+```
+
+_Where 123 is the ID of the post/page/event where the RSVP's were created_
+
+#### Example 7: Protected content for RSVP attendees on a specific event who are not an attendee of specific RSVP tickets
+
+```
+[tribe_tickets_rsvp_protected_content post_id="123" not_rsvp_ids="32,50,90"]
+This content will only show to people who are RSVP attendees of the event (ID: 123) who have NOT RSVP'd to certain RSVP's (IDs: 32, 50, or 90).
 [/tribe_tickets_rsvp_protected_content]
 ```
 

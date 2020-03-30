@@ -30,18 +30,20 @@ class Tribe_Tickets_Protected_Content extends Shortcode_Abstract {
 	 * {@inheritDoc}
 	 */
 	protected $default_arguments = [
-		'post_id'    => null,
-		'ticket_ids' => null,
-		'ticketed'   => 1,
+		'post_id'        => null,
+		'ticket_ids'     => null,
+		'not_ticket_ids' => null,
+		'ticketed'       => 1,
 	];
 
 	/**
 	 * {@inheritDoc}
 	 */
 	public function get_html() {
-		$post_id    = $this->get_argument( 'post_id' );
-		$ticket_ids = Utils__Array::list_to_array( $this->get_argument( 'ticket_ids' ) );
-		$ticketed   = filter_var( $this->get_argument( 'ticketed' ), FILTER_VALIDATE_BOOLEAN );
+		$post_id        = $this->get_argument( 'post_id' );
+		$ticket_ids     = Utils__Array::list_to_array( $this->get_argument( 'ticket_ids' ) );
+		$not_ticket_ids = Utils__Array::list_to_array( $this->get_argument( 'ticket_ids' ) );
+		$ticketed       = filter_var( $this->get_argument( 'ticketed' ), FILTER_VALIDATE_BOOLEAN );
 
 		$post = get_post( $post_id );
 
@@ -58,15 +60,24 @@ class Tribe_Tickets_Protected_Content extends Shortcode_Abstract {
 
 		$tickets_view = Tickets_View::instance();
 
-		if ( empty( $ticket_ids ) ) {
+		if ( empty( $ticket_ids ) && empty( $not_ticket_ids ) ) {
 			$has_ticket_attendees = $tickets_view->has_ticket_attendees( $post_id, $user_id );
 		} else {
-			$has_ticket_attendees = (boolean) Tickets::get_event_attendees_count( $post_id, [
+			$args = [
 				'by' => [
-					'user'   => $user_id,
-					'ticket' => $ticket_ids,
+					'user' => $user_id,
 				],
-			] );
+			];
+
+			if ( $ticket_ids ) {
+				$args['by']['ticket'] = $ticket_ids;
+			}
+
+			if ( $not_ticket_ids ) {
+				$args['by']['ticket__not_in'] = $not_ticket_ids;
+			}
+
+			$has_ticket_attendees = (boolean) Tickets::get_event_attendees_count( $post_id, $args );
 		}
 
 		// Limited to ticketed users; User is not ticketed, show nothing.

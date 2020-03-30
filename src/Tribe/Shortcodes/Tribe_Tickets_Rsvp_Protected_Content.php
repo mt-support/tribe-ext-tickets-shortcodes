@@ -30,18 +30,20 @@ class Tribe_Tickets_Rsvp_Protected_Content extends Shortcode_Abstract {
 	 * {@inheritDoc}
 	 */
 	protected $default_arguments = [
-		'post_id'  => null,
-		'rsvp_ids' => null,
-		'rsvpd'    => 1,
+		'post_id'      => null,
+		'rsvp_ids'     => null,
+		'not_rsvp_ids' => null,
+		'rsvpd'        => 1,
 	];
 
 	/**
 	 * {@inheritDoc}
 	 */
 	public function get_html() {
-		$post_id  = $this->get_argument( 'post_id' );
-		$rsvp_ids = Utils__Array::list_to_array( $this->get_argument( 'rsvp_ids' ) );
-		$rsvpd    = filter_var( $this->get_argument( 'rsvpd' ), FILTER_VALIDATE_BOOLEAN );
+		$post_id        = $this->get_argument( 'post_id' );
+		$ticket_ids     = Utils__Array::list_to_array( $this->get_argument( 'rsvp_ids' ) );
+		$not_ticket_ids = Utils__Array::list_to_array( $this->get_argument( 'not_rsvp_ids' ) );
+		$ticketed       = filter_var( $this->get_argument( 'rsvpd' ), FILTER_VALIDATE_BOOLEAN );
 
 		$post = get_post( $post_id );
 
@@ -52,30 +54,39 @@ class Tribe_Tickets_Rsvp_Protected_Content extends Shortcode_Abstract {
 		$user_id = is_user_logged_in() ? get_current_user_id() : 0;
 
 		// No content to show for someone who is not logged in.
-		if ( $rsvpd && 0 === $user_id ) {
+		if ( $ticketed && 0 === $user_id ) {
 			return '';
 		}
 
 		$tickets_view = Tickets_View::instance();
 
-		if ( empty( $rsvp_ids ) ) {
+		if ( empty( $ticket_ids ) && empty( $not_ticket_ids ) ) {
 			$has_ticket_attendees = $tickets_view->has_rsvp_attendees( $post_id, $user_id );
 		} else {
-			$has_ticket_attendees = (boolean) Tickets::get_event_attendees_count( $post_id, [
+			$args = [
 				'by' => [
-					'user'   => $user_id,
-					'ticket' => $rsvp_ids,
+					'user' => $user_id,
 				],
-			] );
+			];
+
+			if ( $ticket_ids ) {
+				$args['by']['ticket'] = $ticket_ids;
+			}
+
+			if ( $not_ticket_ids ) {
+				$args['by']['ticket__not_in'] = $not_ticket_ids;
+			}
+
+			$has_ticket_attendees = (boolean) Tickets::get_event_attendees_count( $post_id, $args );
 		}
 
-		// Limited to RSVP'd users; User is not RSVP'd, show nothing.
-		if ( $rsvpd && ! $has_ticket_attendees ) {
+		// Limited to ticketed users; User is not ticketed, show nothing.
+		if ( $ticketed && ! $has_ticket_attendees ) {
 			return '';
 		}
 
-		// Limited to non-RSVP'd users; User is RSVP'd, show nothing.
-		if ( ! $rsvpd && $has_ticket_attendees ) {
+		// Limited to non-ticketed users; User is ticketed, show nothing.
+		if ( ! $ticketed && $has_ticket_attendees ) {
 			return '';
 		}
 

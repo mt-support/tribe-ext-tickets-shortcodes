@@ -15,8 +15,6 @@ License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
 This extension allows you to have shortcodes for Event Tickets.
 
-For backwards compatibility, if this section is missing, the full length of the short description will be used, and Markdown parsed.
-
 == Installation ==
 
 Install and activate like any other plugin!
@@ -37,6 +35,11 @@ We're always interested in your feedback and our [Help Desk](https://support.the
 
 == Changelog ==
 
-= [1.0.0] YYYY-MM-DD =
+= [1.1.0] 2020-03-26 =
+
+* Add support for ticket protected content that excludes certain tickets using the new `not_ticket_ids` argument like: `[tribe_tickets_protected_content post_id="123" not_ticket_ids="32,50,90"]`
+* Add support for RSVP protected content that excludes certain RSVPs using the new `not_rsvp_ids` argument like: `[tribe_tickets_rsvp_protected_content post_id="123" not_rsvp_ids="32,50,90"]`
+
+= [1.0.0] 2020-03-26 =
 
 * Initial release
