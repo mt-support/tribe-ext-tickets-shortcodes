@@ -139,7 +139,7 @@ This content will only show to people who are attendees of the event (ID: 123) o
 [/tribe_tickets_protected_content]
 ```
 
-_Where 123 is the ID of the post/page/event where the RSVP's were created_
+_Where 123 is the ID of the post/page/event where the tickets were created_
 
 #### Example 9: Protected content for attendees that shows up after a specific date
 
@@ -149,7 +149,7 @@ This content will only show to people who are attendees of the event (ID: 123) o
 [/tribe_tickets_protected_content]
 ```
 
-_Where 123 is the ID of the post/page/event where the RSVP's were created_
+_Where 123 is the ID of the post/page/event where the tickets were created_
 
 ### Tribe Tickets RSVP Protected Content shortcode
 
