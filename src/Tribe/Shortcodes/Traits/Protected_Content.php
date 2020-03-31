@@ -8,13 +8,13 @@
 
 namespace Tribe\Extensions\Tickets\Shortcodes\Shortcodes\Traits;
 
+use DateTimeZone;
 use Tribe__Date_Utils as Date_Utils;
 use Tribe__Tickets__Tickets as Tickets;
 use Tribe__Tickets__Tickets_View as Tickets_View;
-use Tribe__Utils__Array as Utils__Array;
 use Tribe__Timezones as Timezones;
+use Tribe__Utils__Array as Utils__Array;
 use WP_Post;
-use DateTimeZone;
 
 /**
  * Trait functionality for the Protected Content shortcodes.
@@ -60,6 +60,10 @@ trait Protected_Content {
 		if ( ! $post instanceof WP_Post ) {
 			return $this->can_see_content_filtered( false, $filter_args, 'invalid_post' );
 		}
+
+		// Update post ID var.
+		$post_id                = $post->ID;
+		$filter_args['post_id'] = $post_id;
 
 		// Are we checking for ticketed but user is not logged in?
 		if ( $ticketed && 0 === $user_id ) {
