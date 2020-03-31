@@ -8,10 +8,7 @@
 
 namespace Tribe\Extensions\Tickets\Shortcodes\Shortcodes;
 
-use Tribe__Tickets__Tickets as Tickets;
-use Tribe__Tickets__Tickets_View as Tickets_View;
-use Tribe__Utils__Array as Utils__Array;
-use WP_Post;
+use Tribe\Extensions\Tickets\Shortcodes\Shortcodes\Traits\Protected_Content;
 
 /**
  * Class for Shortcode Tribe_Tickets_Rsvp_Protected_Content.
@@ -20,6 +17,8 @@ use WP_Post;
  * @package Tribe\Extensions\Tickets\Shortcodes\Shortcodes
  */
 class Tribe_Tickets_Rsvp_Protected_Content extends Shortcode_Abstract {
+
+	use Protected_Content;
 
 	/**
 	 * {@inheritDoc}
@@ -33,6 +32,8 @@ class Tribe_Tickets_Rsvp_Protected_Content extends Shortcode_Abstract {
 		'post_id'      => null,
 		'rsvp_ids'     => null,
 		'not_rsvp_ids' => null,
+		'on'           => null,
+		'type'         => 'rsvp',
 		'rsvpd'        => 1,
 	];
 
@@ -40,53 +41,27 @@ class Tribe_Tickets_Rsvp_Protected_Content extends Shortcode_Abstract {
 	 * {@inheritDoc}
 	 */
 	public function get_html() {
-		$post_id        = $this->get_argument( 'post_id' );
-		$ticket_ids     = Utils__Array::list_to_array( $this->get_argument( 'rsvp_ids' ) );
-		$not_ticket_ids = Utils__Array::list_to_array( $this->get_argument( 'not_rsvp_ids' ) );
-		$ticketed       = filter_var( $this->get_argument( 'rsvpd' ), FILTER_VALIDATE_BOOLEAN );
+		$args = $this->get_arguments();
 
-		$post = get_post( $post_id );
+		// Mapping of arguments to expected argument names.
+		$mapping = [
+			'rsvp_ids'     => 'ticket_ids',
+			'not_rsvp_ids' => 'not_ticket_ids',
+			'rsvpd'        => 'ticketed',
+		];
 
-		if ( ! $post instanceof WP_Post ) {
-			return '';
+		// Handle mapping arguments.
+		foreach ( $mapping as $from => $to ) {
+			$args[ $to ] = $args[ $from ];
+
+			unset( $args[ $from ] );
 		}
 
-		$user_id = is_user_logged_in() ? get_current_user_id() : 0;
+		// Let the trait know what called this.
+		$args['context'] = $this->get_registration_slug();
 
-		// No content to show for someone who is not logged in.
-		if ( $ticketed && 0 === $user_id ) {
-			return '';
-		}
-
-		$tickets_view = Tickets_View::instance();
-
-		if ( empty( $ticket_ids ) && empty( $not_ticket_ids ) ) {
-			$has_ticket_attendees = $tickets_view->has_rsvp_attendees( $post_id, $user_id );
-		} else {
-			$args = [
-				'by' => [
-					'user' => $user_id,
-				],
-			];
-
-			if ( $ticket_ids ) {
-				$args['by']['ticket'] = $ticket_ids;
-			}
-
-			if ( $not_ticket_ids ) {
-				$args['by']['ticket__not_in'] = $not_ticket_ids;
-			}
-
-			$has_ticket_attendees = (boolean) Tickets::get_event_attendees_count( $post_id, $args );
-		}
-
-		// Limited to ticketed users; User is not ticketed, show nothing.
-		if ( $ticketed && ! $has_ticket_attendees ) {
-			return '';
-		}
-
-		// Limited to non-ticketed users; User is ticketed, show nothing.
-		if ( ! $ticketed && $has_ticket_attendees ) {
+		// Can they see the content?
+		if ( ! $this->can_see_content( $args ) ) {
 			return '';
 		}
 
