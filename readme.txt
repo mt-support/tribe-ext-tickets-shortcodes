@@ -35,7 +35,7 @@ We're always interested in your feedback and our [Help Desk](https://support.the
 
 == Changelog ==
 
-= [1.1.0] 2020-03-26 =
+= [1.1.0] 2020-03-31 =
 
 * Add support for ticket protected content that excludes certain tickets using the new `not_ticket_ids` argument like: `[tribe_tickets_protected_content post_id="123" not_ticket_ids="32,50,90"]`
 * Add support for RSVP protected content that excludes certain RSVPs using the new `not_rsvp_ids` argument like: `[tribe_tickets_rsvp_protected_content post_id="123" not_rsvp_ids="32,50,90"]`
