@@ -4,7 +4,7 @@
  * Plugin URI:        https://theeventscalendar.com/extensions/---the-extension-article-url---/
  * GitHub Plugin URI: https://github.com/mt-support/tribe-ext-tickets-shortcodes
  * Description:       This extension allows you to have shortcodes for Event Tickets.
- * Version:           1.0.0
+ * Version:           1.1.0
  * Extension Class:   Tribe\Extensions\Tickets\Shortcodes\Main
  * Author:            Modern Tribe, Inc.
  * Author URI:        http://m.tri.be/1971

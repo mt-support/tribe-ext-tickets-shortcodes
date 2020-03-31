@@ -39,6 +39,7 @@ We're always interested in your feedback and our [Help Desk](https://support.the
 
 * Add support for ticket protected content that excludes certain tickets using the new `not_ticket_ids` argument like: `[tribe_tickets_protected_content post_id="123" not_ticket_ids="32,50,90"]`
 * Add support for RSVP protected content that excludes certain RSVPs using the new `not_rsvp_ids` argument like: `[tribe_tickets_rsvp_protected_content post_id="123" not_rsvp_ids="32,50,90"]`
+* Add support for protected content shortcodes to show on a specific date, options available are `event_start_date` and date/time formats like `2020-05-01 08:00:00` using the new `on` argument like: `[tribe_tickets_rsvp_protected_content post_id="123" on="event_start_date"]`
 
 = [1.0.0] 2020-03-26 =
 
